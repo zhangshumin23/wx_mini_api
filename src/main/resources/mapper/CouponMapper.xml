@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zsm.mini.dao.CouponMapper" >
+  <resultMap id="BaseResultMap" type="com.zsm.mini.domain.Coupon" >
+    <id column="fid" property="fid" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="createId" property="createid" jdbcType="VARCHAR" />
+    <result column="createName" property="createname" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="couponType" property="coupontype" jdbcType="INTEGER" />
+    <result column="sendActivityType" property="sendactivitytype" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="totalCount" property="totalcount" jdbcType="INTEGER" />
+    <result column="beginDate" property="begindate" jdbcType="TIMESTAMP" />
+    <result column="endDate" property="enddate" jdbcType="TIMESTAMP" />
+    <result column="balanceCount" property="balancecount" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    fid, createTime, createId, createName, name, status, couponType, sendActivityType, 
+    amount, totalCount, beginDate, endDate, balanceCount, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cp_coupon
+    where fid = #{fid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_cp_coupon
+    where fid = #{fid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zsm.mini.domain.Coupon" >
+    insert into t_cp_coupon (fid, createTime, createId, 
+      createName, name, status, 
+      couponType, sendActivityType, amount, 
+      totalCount, beginDate, endDate, 
+      balanceCount, remark)
+    values (#{fid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{createid,jdbcType=VARCHAR}, 
+      #{createname,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{coupontype,jdbcType=INTEGER}, #{sendactivitytype,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, 
+      #{totalcount,jdbcType=INTEGER}, #{begindate,jdbcType=TIMESTAMP}, #{enddate,jdbcType=TIMESTAMP}, 
+      #{balancecount,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zsm.mini.domain.Coupon" >
+    insert into t_cp_coupon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        fid,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="createid != null" >
+        createId,
+      </if>
+      <if test="createname != null" >
+        createName,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="coupontype != null" >
+        couponType,
+      </if>
+      <if test="sendactivitytype != null" >
+        sendActivityType,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="totalcount != null" >
+        totalCount,
+      </if>
+      <if test="begindate != null" >
+        beginDate,
+      </if>
+      <if test="enddate != null" >
+        endDate,
+      </if>
+      <if test="balancecount != null" >
+        balanceCount,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        #{fid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createid != null" >
+        #{createid,jdbcType=VARCHAR},
+      </if>
+      <if test="createname != null" >
+        #{createname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="coupontype != null" >
+        #{coupontype,jdbcType=INTEGER},
+      </if>
+      <if test="sendactivitytype != null" >
+        #{sendactivitytype,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalcount != null" >
+        #{totalcount,jdbcType=INTEGER},
+      </if>
+      <if test="begindate != null" >
+        #{begindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="balancecount != null" >
+        #{balancecount,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zsm.mini.domain.Coupon" >
+    update t_cp_coupon
+    <set >
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createid != null" >
+        createId = #{createid,jdbcType=VARCHAR},
+      </if>
+      <if test="createname != null" >
+        createName = #{createname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="coupontype != null" >
+        couponType = #{coupontype,jdbcType=INTEGER},
+      </if>
+      <if test="sendactivitytype != null" >
+        sendActivityType = #{sendactivitytype,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalcount != null" >
+        totalCount = #{totalcount,jdbcType=INTEGER},
+      </if>
+      <if test="begindate != null" >
+        beginDate = #{begindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddate != null" >
+        endDate = #{enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="balancecount != null" >
+        balanceCount = #{balancecount,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fid = #{fid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zsm.mini.domain.Coupon" >
+    update t_cp_coupon
+    set createTime = #{createtime,jdbcType=TIMESTAMP},
+      createId = #{createid,jdbcType=VARCHAR},
+      createName = #{createname,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      couponType = #{coupontype,jdbcType=INTEGER},
+      sendActivityType = #{sendactivitytype,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=DECIMAL},
+      totalCount = #{totalcount,jdbcType=INTEGER},
+      beginDate = #{begindate,jdbcType=TIMESTAMP},
+      endDate = #{enddate,jdbcType=TIMESTAMP},
+      balanceCount = #{balancecount,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where fid = #{fid,jdbcType=VARCHAR}
+  </update>
+</mapper>

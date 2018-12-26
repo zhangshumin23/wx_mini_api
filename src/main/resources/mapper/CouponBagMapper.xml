@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zsm.mini.dao.CouponBagMapper" >
+  <resultMap id="BaseResultMap" type="com.zsm.mini.domain.CouponBag" >
+    <id column="fid" property="fid" jdbcType="VARCHAR" />
+    <result column="couponId" property="couponid" jdbcType="VARCHAR" />
+    <result column="couponType" property="coupontype" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="createId" property="createid" jdbcType="VARCHAR" />
+    <result column="createName" property="createname" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="userPhone" property="userphone" jdbcType="VARCHAR" />
+    <result column="getTime" property="gettime" jdbcType="TIMESTAMP" />
+    <result column="beginDate" property="begindate" jdbcType="TIMESTAMP" />
+    <result column="endDate" property="enddate" jdbcType="TIMESTAMP" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="usedTime" property="usedtime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    fid, couponId, couponType, createTime, createId, createName, name, number, status, 
+    userPhone, getTime, beginDate, endDate, amount, usedTime, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cp_couponbag
+    where fid = #{fid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_cp_couponbag
+    where fid = #{fid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zsm.mini.domain.CouponBag" >
+    insert into t_cp_couponbag (fid, couponId, couponType, 
+      createTime, createId, createName, 
+      name, number, status, 
+      userPhone, getTime, beginDate, 
+      endDate, amount, usedTime, 
+      remark)
+    values (#{fid,jdbcType=VARCHAR}, #{couponid,jdbcType=VARCHAR}, #{coupontype,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{createid,jdbcType=VARCHAR}, #{createname,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{userphone,jdbcType=VARCHAR}, #{gettime,jdbcType=TIMESTAMP}, #{begindate,jdbcType=TIMESTAMP}, 
+      #{enddate,jdbcType=TIMESTAMP}, #{amount,jdbcType=DECIMAL}, #{usedtime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zsm.mini.domain.CouponBag" >
+    insert into t_cp_couponbag
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        fid,
+      </if>
+      <if test="couponid != null" >
+        couponId,
+      </if>
+      <if test="coupontype != null" >
+        couponType,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="createid != null" >
+        createId,
+      </if>
+      <if test="createname != null" >
+        createName,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="userphone != null" >
+        userPhone,
+      </if>
+      <if test="gettime != null" >
+        getTime,
+      </if>
+      <if test="begindate != null" >
+        beginDate,
+      </if>
+      <if test="enddate != null" >
+        endDate,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="usedtime != null" >
+        usedTime,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        #{fid,jdbcType=VARCHAR},
+      </if>
+      <if test="couponid != null" >
+        #{couponid,jdbcType=VARCHAR},
+      </if>
+      <if test="coupontype != null" >
+        #{coupontype,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createid != null" >
+        #{createid,jdbcType=VARCHAR},
+      </if>
+      <if test="createname != null" >
+        #{createname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userphone != null" >
+        #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="gettime != null" >
+        #{gettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="begindate != null" >
+        #{begindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="usedtime != null" >
+        #{usedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zsm.mini.domain.CouponBag" >
+    update t_cp_couponbag
+    <set >
+      <if test="couponid != null" >
+        couponId = #{couponid,jdbcType=VARCHAR},
+      </if>
+      <if test="coupontype != null" >
+        couponType = #{coupontype,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createid != null" >
+        createId = #{createid,jdbcType=VARCHAR},
+      </if>
+      <if test="createname != null" >
+        createName = #{createname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userphone != null" >
+        userPhone = #{userphone,jdbcType=VARCHAR},
+      </if>
+      <if test="gettime != null" >
+        getTime = #{gettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="begindate != null" >
+        beginDate = #{begindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddate != null" >
+        endDate = #{enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="usedtime != null" >
+        usedTime = #{usedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fid = #{fid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zsm.mini.domain.CouponBag" >
+    update t_cp_couponbag
+    set couponId = #{couponid,jdbcType=VARCHAR},
+      couponType = #{coupontype,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      createId = #{createid,jdbcType=VARCHAR},
+      createName = #{createname,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      number = #{number,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      userPhone = #{userphone,jdbcType=VARCHAR},
+      getTime = #{gettime,jdbcType=TIMESTAMP},
+      beginDate = #{begindate,jdbcType=TIMESTAMP},
+      endDate = #{enddate,jdbcType=TIMESTAMP},
+      amount = #{amount,jdbcType=DECIMAL},
+      usedTime = #{usedtime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where fid = #{fid,jdbcType=VARCHAR}
+  </update>
+</mapper>

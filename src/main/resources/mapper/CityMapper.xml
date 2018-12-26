@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zsm.mini.dao.CityMapper" >
+  <resultMap id="BaseResultMap" type="com.zsm.mini.domain.City" >
+    <id column="fid" property="fid" jdbcType="VARCHAR" />
+    <result column="seq" property="seq" jdbcType="INTEGER" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="provinceJC" property="provincejc" jdbcType="VARCHAR" />
+    <result column="cityJC" property="cityjc" jdbcType="VARCHAR" />
+    <result column="cityCarJC" property="citycarjc" jdbcType="VARCHAR" />
+    <result column="provinceId" property="provinceid" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+    <result column="latitude" property="latitude" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    fid, seq, city, province, provinceJC, cityJC, cityCarJC, provinceId, longitude, latitude
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_bd_city
+    where fid = #{fid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_bd_city
+    where fid = #{fid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zsm.mini.domain.City" >
+    insert into t_bd_city (fid, seq, city, 
+      province, provinceJC, cityJC, 
+      cityCarJC, provinceId, longitude, 
+      latitude)
+    values (#{fid,jdbcType=VARCHAR}, #{seq,jdbcType=INTEGER}, #{city,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{provincejc,jdbcType=VARCHAR}, #{cityjc,jdbcType=VARCHAR}, 
+      #{citycarjc,jdbcType=VARCHAR}, #{provinceid,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
+      #{latitude,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zsm.mini.domain.City" >
+    insert into t_bd_city
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        fid,
+      </if>
+      <if test="seq != null" >
+        seq,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="provincejc != null" >
+        provinceJC,
+      </if>
+      <if test="cityjc != null" >
+        cityJC,
+      </if>
+      <if test="citycarjc != null" >
+        cityCarJC,
+      </if>
+      <if test="provinceid != null" >
+        provinceId,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fid != null" >
+        #{fid,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="provincejc != null" >
+        #{provincejc,jdbcType=VARCHAR},
+      </if>
+      <if test="cityjc != null" >
+        #{cityjc,jdbcType=VARCHAR},
+      </if>
+      <if test="citycarjc != null" >
+        #{citycarjc,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceid != null" >
+        #{provinceid,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zsm.mini.domain.City" >
+    update t_bd_city
+    <set >
+      <if test="seq != null" >
+        seq = #{seq,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="provincejc != null" >
+        provinceJC = #{provincejc,jdbcType=VARCHAR},
+      </if>
+      <if test="cityjc != null" >
+        cityJC = #{cityjc,jdbcType=VARCHAR},
+      </if>
+      <if test="citycarjc != null" >
+        cityCarJC = #{citycarjc,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceid != null" >
+        provinceId = #{provinceid,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where fid = #{fid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zsm.mini.domain.City" >
+    update t_bd_city
+    set seq = #{seq,jdbcType=INTEGER},
+      city = #{city,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      provinceJC = #{provincejc,jdbcType=VARCHAR},
+      cityJC = #{cityjc,jdbcType=VARCHAR},
+      cityCarJC = #{citycarjc,jdbcType=VARCHAR},
+      provinceId = #{provinceid,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR}
+    where fid = #{fid,jdbcType=VARCHAR}
+  </update>
+</mapper>
